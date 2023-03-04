@@ -1,0 +1,160 @@
+:root {
+  --clr-background: #111111;
+  --clr-text: #ffffff;
+  --clr-header-text: #818487;
+  --clr-button-primary: #279de0;
+}
+.Landingpage__container {
+  color: var(--clr-text);
+  background-color: var(--clr-background);
+  font-size: 1.1rem;
+  /* overflow: hidden; */
+  height: 100vh;
+  position: relative;
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1.5rem;
+}
+.header__left {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.header__right > ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  font-weight: 550;
+  align-items: center;
+  color: var(--clr-header-text);
+}
+.header__right > ul > li:hover {
+  cursor: pointer;
+  color: var(--clr-text);
+}
+.login {
+  border: none;
+  background-color: inherit;
+  color: var(--clr-header-text);
+  font-size: 1rem;
+  font-weight: 550;
+  padding-inline: 1rem;
+}
+.login:hover {
+  cursor: pointer;
+  color: var(--clr-header-text);
+}
+.signup {
+  border: none;
+  font-size: 1rem;
+  font-weight: 550;
+  padding-inline: 1.5rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--clr-text);
+  background-color: var(--clr-button-primary);
+}
+.signup:hover {
+  cursor: pointer;
+  background-color: #3880d0;
+}
+.toggle-button {
+  display: none;
+}
+@media (max-width: 700px) {
+  .header__right > ul {
+    display: none;
+  }
+  .toggle-button {
+    display: block;
+  }
+  .header__right > ul[data-expanded="true"] {
+    display: flex;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    flex-direction: column;
+    z-index: 9999;
+    padding: 0%;
+    background-color: var(--clr-text);
+    border-radius: 0.5rem;
+    padding-block: 1rem;
+  }
+  .header__right > ul[data-expanded="true"] > li:hover {
+    color: var(--clr-background);
+  }
+  .header__right > ul[data-expanded="true"].login :hover{
+    color: var(--clr-background);
+  }
+}
+/* landing page body styles */
+
+.LandingPage__body {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-block: 2rem;
+}
+.LandingPage__left > h1 {
+  font-size: 4rem;
+  margin: 0%;
+}
+.LandingPage__left > p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 1);
+}
+.LandingPage__left > button {
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
+  background-color: #3880d0;
+  padding-inline: 3.375rem;
+  padding-block: 1.1875rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+.LandingPage__left > button:hover {
+  cursor: pointer;
+  background-color: var(--clr-button-primary);
+}
+.LandingPage__left {
+  width: 50%;
+}
+.LandingPage__right {
+  width: 50%;
+}
+.LandingPage__right > img {
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .LandingPage__left > h1 {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 650px) {
+  .LandingPage__body {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  .LandingPage__left {
+    width: 90%;
+  }
+  .LandingPage__right {
+    width: 90%;
+  }
+  .LandingPage__left > h1 {
+    font-size: 2rem;
+  }
+}
