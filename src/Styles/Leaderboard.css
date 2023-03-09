@@ -1,6 +1,7 @@
 .table__container {
   display: flex;
   overflow: hidden;
+  width: 98%;
 }
 .table__left {
   flex: 1;
@@ -29,7 +30,7 @@ table {
   /* position: absolute; */
   color: whitesmoke;
   border-spacing: 0px;
-  width: 85%;
+  width: 100%;
 }
 
 .heading {
@@ -96,7 +97,10 @@ tbody tr td:first-child {
 @media (max-width: 750px) {
   .table__container {
     display: inline-flex;
-    margin: 1rem;
+    margin: 0.5rem;
+  }
+  .table__left{
+    max-width: 0%;
   }
   .top > button {
     display: block;
