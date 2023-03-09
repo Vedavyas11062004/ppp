@@ -1,19 +1,22 @@
 .table__container {
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 98%;
+  height: 90vh;
 }
 .table__left {
   flex: 1;
 }
 .table__right {
   flex: 3;
+  height: 100%;
 }
 
 .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 10vh;
 }
 .top > button {
   display: none;
@@ -31,6 +34,7 @@ table {
   color: whitesmoke;
   border-spacing: 0px;
   width: 100%;
+  height: 80vh;
 }
 
 .heading {
