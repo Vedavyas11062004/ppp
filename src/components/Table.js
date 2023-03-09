@@ -225,7 +225,6 @@ export default function Table(props) {
             );
           })}
           <tr>
-            <td colSpan={4}></td>
             <td colSpan={1}>
               <button
                 onClick={() => {
@@ -240,6 +239,11 @@ export default function Table(props) {
                   <img src={leftarrow} alt=""></img>
                 </span>
               </button>
+            </td>
+            <td colSpan={3}>
+              page number {indexPage+1}
+            </td>
+            <td colSpan={1}>
               <button
                 onClick={() => {
                   if (indexPage < displayarr.length - 1) {

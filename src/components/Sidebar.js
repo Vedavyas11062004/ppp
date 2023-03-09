@@ -7,9 +7,9 @@ import githublogo from '../Asserts/github.svg'
 import codeforceslogo from '../Asserts/code-forces.svg'
 import logoutlogo from '../Asserts/box-arrow-left.svg'
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   return (
-    <div className='sidebar'>
+    <div className='sidebar' aria-expanded={props.expanded}>
       <ul>
         <li><span><img src={homelogo} alt=''></img></span>Home</li>
         <li><span><img src={codeforceslogo} alt=''></img></span>Codeforces</li>

@@ -1,22 +1,42 @@
+.table__container {
+  display: flex;
+  overflow: hidden;
+}
+.table__left {
+  flex: 1;
+}
+.table__right {
+  flex: 3;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top > button {
+  display: none;
+  border: none;
+  background-image: url(../Asserts/list.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: inherit;
+  width: 25px;
+  height: 25px;
+}
+
 table {
-  position: absolute;
-  top: 30%;
-  left: 60%;
-  transform: translate(-55%, -20%);
-  margin: 20px;
+  /* position: absolute; */
   color: whitesmoke;
   border-spacing: 0px;
-  width: 75%;
+  width: 85%;
 }
 
 .heading {
   color: white;
-  position: absolute;
-  left: 20%;
-  top: 3%;
 }
 
-.heading>span{
+.heading > span {
   color: rgba(244, 103, 31, 1);
 }
 
@@ -43,13 +63,20 @@ tbody {
 td {
   background: rgba(31, 30, 31, 1);
 }
+tr:last-child td{
+  padding-block:1.5rem;
+}
 tr:last-child td:first-child {
   border-bottom-left-radius: 1rem;
 }
 tr:last-child td:last-child {
   border-bottom-right-radius: 1rem;
 }
-tr:last-child>td:last-child>button{
+tr:last-child > td:first-child > button {
+  border: none;
+  background-color: inherit;
+}
+tr:last-child > td:last-child > button {
   border: none;
   background-color: inherit;
 }
@@ -64,4 +91,24 @@ tbody tr td {
 }
 tbody tr td:first-child {
   color: white;
+}
+
+@media (max-width: 750px) {
+  .table__container {
+    display: inline-flex;
+    margin: 1rem;
+  }
+  .top > button {
+    display: block;
+    z-index: 9999;
+  }
+  .top>button[aria-expanded='true']{
+    background-image: url(../Asserts/cross-23.svg);
+  }
+  th,
+  tr,
+  td {
+    padding: 0.5rem;
+    color: whitesmoke;
+  }
 }
