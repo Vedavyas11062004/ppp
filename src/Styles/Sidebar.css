@@ -29,6 +29,13 @@
     padding: 1.5rem;
     gap: .5rem;
 }
+.sidebar>ul>li>a{
+    color:white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
 .sidebar>ul>li:last-child{
     padding-block:1rem;
     padding-inline:1.25rem;

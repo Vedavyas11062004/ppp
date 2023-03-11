@@ -1,0 +1,132 @@
+:root {
+  --clr-Marine-blue: hsl(213, 96%, 18%);
+  --clr-Purplish-blue: hsl(243, 100%, 62%);
+  --clr-Pastel-blue: hsl(228, 100%, 84%);
+  --clr-Light-blue: hsl(206, 94%, 87%);
+  --clr-Strawberry-red: hsl(354, 84%, 57%);
+  --clr-Cool-gray: hsl(231, 11%, 63%);
+  --clr-Light-gray: hsl(229, 24%, 87%);
+  --clr-Magnolia: hsl(217, 100%, 97%);
+  --clr-Alabaster: hsl(231, 100%, 99%);
+  --clr-White: hsl(0, 0%, 100%);
+}
+/* body{
+    background-color: var(--clr-White);
+} */
+
+.pageContainer {
+  color: var(--clr-White);
+  display: flex;
+  gap: 3rem;
+  width: 60%;
+  height: 65vh;
+  background-color: #282729;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+}
+.rightPart {
+  flex: 2;
+}
+.leftPart {
+  background-image: url(../SignUp-Asserts/bg-sidebar-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+  flex: 1;
+}
+.leftPart > ol {
+  list-style: none;
+  padding: 1rem;
+}
+.leftPart > ol > li {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-block: 2rem;
+}
+.leftPart > ol > li > div:first-child {
+  width: 2rem;
+  height: 2rem;
+  background-color: inherit;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.leftPart > ol > li > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+.leftPart > ol > li > div:last-child > span:first-child {
+  color: #d4d4d5;
+  font-size: 0.75rem;
+}
+.leftPart > ol > li > div:last-child > span:last-child {
+  font-weight: bold;
+}
+.rightPart {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+.page1-head {
+  padding: 2rem;
+}
+.page1-head > strong {
+  font-size: 2rem;
+  font-family: "Ubuntu", sans-serif;
+}
+.page1-head > p {
+  color: #d4d4d5;
+}
+.page1-body {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 2rem;
+}
+.page1-body > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  list-style: none;
+  padding: 0%;
+  margin: 0%;
+}
+.page1-body > ul > li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.page1-body > ul > li > input {
+  border: none;
+  height: 2rem;
+  border-radius: 0.25rem;
+  outline: none;
+}
+.page1-body > ul > li > input:focus {
+  border: 2px solid var(--clr-Pastel-blue);
+  border-radius: 0.25rem;
+}
+.page1-body > button {
+  align-self: flex-end;
+  margin-block: 3rem;
+  border: none;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  color: var(--clr-Alabaster);
+  background-color: var(--clr-Purplish-blue);
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.page1-body > button:hover {
+  cursor: pointer;
+  background-color: var(--clr-Marine-blue);
+}

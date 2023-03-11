@@ -1,93 +1,33 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
-import "../Styles/Leaderboard.css";
 
-export default function Codeforces() {
+export default function Leetcode() {
+  // getting users info
   const users = [
     {
       name: "jitendra",
       rating: 1700,
       problems: 300,
-      tag: "expert",
+      tag: "-",
     },
     {
       name: "phani",
       rating: 1750,
       problems: 300,
-      tag: "expert",
+      tag: "Knight",
     },
     {
       name: "vedavyas",
       rating: 1700,
       problems: 320,
-      tag: "expert",
+      tag: "Knight",
     },
     {
       name: "uday",
       rating: 1680,
       problems: 350,
-      tag: "expert",
-    },
-    {
-      name: "a",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "b",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "c",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "d",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
-    },
-    {
-      name: "e",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "f",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "g",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "h",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
-    },
-    {
-      name: "i",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "j",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
+      tag: "-",
     },
   ];
   const friends = [
@@ -96,18 +36,6 @@ export default function Codeforces() {
     },
     {
       name: "uday",
-    },
-    {
-      name: "a",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "b",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
     },
   ];
   users.sort((a, b) => b.rating - a.rating);
@@ -197,17 +125,20 @@ export default function Codeforces() {
     displayarr.push(subarrremaing);
   }
   console.log(displayarr);
-  // end
 
-  const [expanded, setExpanded] = useState('false');
+  // grouping done
+
+  const [expanded, setExpanded] = useState("false");
   console.log(expanded);
   const toggle_action = () => {
-    if (expanded === 'true') {
-      setExpanded('false');
+    if (expanded === "true") {
+      setExpanded("false");
     } else {
-      setExpanded('true');
+      setExpanded("true");
     }
   };
+
+  // end
   return (
     <div className="table__container">
       <div className="table__left">{<Sidebar expanded={expanded} />}</div>
@@ -216,10 +147,14 @@ export default function Codeforces() {
           <h1 className="heading">
             Home/<span>Codeforces</span>
           </h1>
-          <button aria-expanded={expanded} onClick={toggle_action}>
-          </button>
+          <button aria-expanded={expanded} onClick={toggle_action}></button>
         </div>
-        <Table rating="Rating" issuesolved="Questions Solved" tag="Tag" displayarr={displayarr}/>
+        <Table
+          rating="Rating"
+          issuesolved="Problems Solved"
+          tag="Badges"
+          displayarr={displayarr}
+        />
       </div>
     </div>
   );

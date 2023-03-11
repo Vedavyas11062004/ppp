@@ -33,7 +33,10 @@
   align-items: center;
   color: var(--clr-header-text);
 }
-.header__right > ul > li:hover {
+.header__right>ul>li>a{
+  color: var(--clr-header-text);
+}
+.header__right > ul>li>a:hover {
   cursor: pointer;
   color: var(--clr-text);
 }

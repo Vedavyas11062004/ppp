@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import toggleButton from "../Asserts/list.svg";
 export default function Header() {
   const [expanded, setExpanded] = useState("false");
@@ -15,15 +16,33 @@ export default function Header() {
       <div className="header__left">PPP</div>
       <div className="header__right">
         <ul data-expanded={expanded} className="list">
-          <li>codeforces</li>
-          <li>github</li>
-          <li>leetcode</li>
-          <li>codechef</li>
+          <li>
+            <Link to="/codeforces" style={{ textDecoration: "none" }}>
+              codeforces
+            </Link>
+          </li>
+          <li>
+            <Link to="/codeforces" style={{ textDecoration: "none" }}>
+              github
+            </Link>
+          </li>
+          <li>
+            <Link to="/leetcode" style={{ textDecoration: "none" }}>
+              leetcode
+            </Link>
+          </li>
+          <li>
+            <Link to="/codeforces" style={{ textDecoration: "none" }}>
+              codechef
+            </Link>
+          </li>
           <li>
             <button className="login">Login</button>
           </li>
           <li>
-            <button className="signup">signup</button>
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              <button className="signup">signup</button>
+            </Link>
           </li>
         </ul>
       </div>
