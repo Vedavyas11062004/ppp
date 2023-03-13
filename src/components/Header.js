@@ -22,7 +22,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link to="/codeforces" style={{ textDecoration: "none" }}>
+            <Link to="/github" style={{ textDecoration: "none" }}>
               github
             </Link>
           </li>

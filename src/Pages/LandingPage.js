@@ -9,11 +9,10 @@ import ParticleConfig from "../components/ParticleConfig";
 
 export default function LandingPage() {
   const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
     await loadFull(engine);
   }, []);
   const particlesLoaded = useCallback(async (container) => {
-    await console.log(container);
+    await console.log(" ");
   }, []);
   return (
     <div className="Landingpage__container">
