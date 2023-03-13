@@ -3,32 +3,31 @@ import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
 import "../Styles/Leaderboard.css";
 
-export default function Leetcode() {
-  // getting users info
+export default function Codechef() {
   const users = [
     {
       name: "jitendra",
       rating: 1700,
       problems: 300,
-      tag: "-",
+      tag: "4*",
     },
     {
       name: "phani",
       rating: 1750,
       problems: 300,
-      tag: "Knight",
+      tag: "4*",
     },
     {
       name: "vedavyas",
       rating: 1700,
       problems: 320,
-      tag: "Knight",
+      tag: "5*",
     },
     {
       name: "uday",
       rating: 1680,
       problems: 350,
-      tag: "-",
+      tag: "4*",
     },
   ];
   const friends = [
@@ -139,7 +138,6 @@ export default function Leetcode() {
     }
   };
 
-  // end
   return (
     <div className="table__container">
       <div className="table__left">{<Sidebar expanded={expanded} />}</div>
@@ -152,8 +150,8 @@ export default function Leetcode() {
         </div>
         <Table
           rating="Rating"
-          issuesolved="Problems Solved"
-          tag="Badges"
+          issuesolved="Problems solved"
+          tag="Tag"
           displayarr={displayarr}
         />
       </div>

@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    gap: .5rem;
+    gap: 1rem;
 }
 .sidebar>ul>li>a{
     color:white;
@@ -43,7 +43,9 @@
     border-radius: .5rem;
     font-weight: bold;
 }
-
+.logout{
+    margin-block: 1rem;
+}
 @media (max-width: 750px) {
     .sidebar{
         display: none;

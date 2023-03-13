@@ -4,6 +4,7 @@ import SignUp from './Pages/SignUp';
 import Codeforces from './Pages/Codeforces';
 import LandingPage from './Pages/LandingPage'
 import Leetcode from './Pages/Leetcode';
+import Codechef from './Pages/Codechef';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path='/' element={<LandingPage/>}></Route>
       <Route path='/codeforces' element={<Codeforces/>}></Route>
       <Route path='/leetcode' element={<Leetcode/>}></Route>
+      <Route path='/codechef' element={<Codechef/>}></Route>
       <Route path='/signup' element={<SignUp/>}></Route>
     </Routes>
      
