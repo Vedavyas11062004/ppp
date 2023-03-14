@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/SignUp.css";
 
-export default function LeftPartSignUp({ passed, setPassed }) {
+export default function LeftPartSignUp({ passed}) {
   // console.log(passed);
   return (
     <div className="leftPart">
