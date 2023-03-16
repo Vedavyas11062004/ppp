@@ -3,7 +3,6 @@ import "../Styles/Leaderboard.css";
 import leftarrow from "../Asserts/chevron-left.svg";
 import rightarrow from "../Asserts/chevron-right.svg";
 export default function Table({rating,issuesolved,tag,displayarr}) {
-  
   const [indexPage, setindex] = useState(0);
 
   return (
@@ -14,7 +13,7 @@ export default function Table({rating,issuesolved,tag,displayarr}) {
             <th>Rank</th>
             <th>Name</th>
             <th>{rating}</th>
-            <th>{issuesolved}</th>
+            {/* <th>{issuesolved}</th> */}
             <th>{tag}</th>
           </tr>
         </thead>
@@ -25,8 +24,8 @@ export default function Table({rating,issuesolved,tag,displayarr}) {
                 <td>{user.rank}</td>
                 <td>{user.name}</td>
                 <td>{user.rating}</td>
-                <td>{user.problems}</td>
                 <td>{user.tag}</td>
+                {/* <td> - </td> */}
               </tr>
             );
           })}
@@ -46,7 +45,7 @@ export default function Table({rating,issuesolved,tag,displayarr}) {
                 </span>
               </button>
             </td>
-            <td colSpan={3}>
+            <td colSpan={2}>
               page number {indexPage+1}
             </td>
             <td colSpan={1}>

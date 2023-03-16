@@ -1,115 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
 import "../Styles/Leaderboard.css";
 
 export default function Codeforces() {
-  const users = [
-    {
-      name: "jitendra",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "phani",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "vedavyas",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "uday",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
-    },
-    {
-      name: "a",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "b",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "c",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "d",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
-    },
-    {
-      name: "e",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "f",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "g",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "h",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
-    },
-    {
-      name: "i",
-      rating: 1700,
-      problems: 320,
-      tag: "expert",
-    },
-    {
-      name: "j",
-      rating: 1680,
-      problems: 350,
-      tag: "expert",
-    },
-  ];
-  const friends = [
-    {
-      name: "vedavyas",
-    },
-    {
-      name: "uday",
-    },
-    {
-      name: "a",
-      rating: 1700,
-      problems: 300,
-      tag: "expert",
-    },
-    {
-      name: "b",
-      rating: 1750,
-      problems: 300,
-      tag: "expert",
-    },
-  ];
+  const friends = ["nagaphbilla", "vishalg17", "Narendra_Vasa"]
+  const [users, setUsers] = useState([])
+  const [isLoading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let coders = ["nagaphbilla", "sharath__chandra", "Narendra_Vasa", "Veda_vyas_Reddy", "Jitendra_Abhiram", "vishalg17", "Benq", "jiangly", "ko_osaga", "zh0ukangyang"]
+    let url = "https://codeforces.com/api/user.info?handles="
+    for(const user of coders) {
+      url += user + ';'
+    }
+    let data = []
+    if(isLoading) {
+    fetch(url)
+    .then(data => data.json())
+    .then(result => {
+      result["result"].map(user => {
+        const details = {
+          name : user["handle"],
+          rating : user["rating"],
+          tag : user["rank"]
+        }
+        data.push(details)
+      })
+    })
+    .then(() => {
+      setUsers(data)
+      setLoading(false)})
+  }
+  }, [])
+
   users.sort((a, b) => b.rating - a.rating);
   let i = 1;
   const rankusers = users.map((e) => {
@@ -120,13 +44,13 @@ export default function Codeforces() {
   });
 
   const allusers = rankusers.filter(function (objFromA) {
-    return !friends.find(function (objFromB) {
-      return objFromA.name === objFromB.name;
+    return !friends.find(function (frnd) {
+      return objFromA.name === frnd;
     });
   });
   const userfriends = rankusers.filter(function (objFromA) {
-    return friends.find(function (objFromB) {
-      return objFromA.name === objFromB.name;
+    return friends.find(function (frnd) {
+      return objFromA.name === frnd;
     });
   });
 
@@ -219,7 +143,8 @@ export default function Codeforces() {
           <button aria-expanded={expanded} onClick={toggle_action}>
           </button>
         </div>
-        <Table rating="Rating" issuesolved="Questions Solved" tag="Tag" displayarr={displayarr}/>
+        {isLoading ? <h1>Loading</h1> :
+        <Table rating="Rating" issuesolved="Questions Solved" tag="Tag" displayarr={displayarr}/> }
       </div>
     </div>
   );
