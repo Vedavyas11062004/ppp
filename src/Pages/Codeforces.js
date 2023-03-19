@@ -4,35 +4,47 @@ import Table from "../components/Table";
 import "../Styles/Leaderboard.css";
 
 export default function Codeforces() {
-  const friends = ["nagaphbilla", "vishalg17", "Narendra_Vasa"]
-  const [users, setUsers] = useState([])
-  const [isLoading, setLoading] = useState(true)
+  const friends = ["nagaphbilla", "vishalg17", "Narendra_Vasa"];
+  const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    let coders = ["nagaphbilla", "sharath__chandra", "Narendra_Vasa", "Veda_vyas_Reddy", "Jitendra_Abhiram", "vishalg17", "Benq", "jiangly", "ko_osaga", "zh0ukangyang"]
-    let url = "https://codeforces.com/api/user.info?handles="
-    for(const user of coders) {
-      url += user + ';'
+    let coders = [
+      "nagaphbilla",
+      "sharath__chandra",
+      "Narendra_Vasa",
+      "Veda_vyas_Reddy",
+      "Jitendra_Abhiram",
+      "vishalg17",
+      "Benq",
+      "jiangly",
+      "ko_osaga",
+      "zh0ukangyang",
+    ];
+    let url = "https://codeforces.com/api/user.info?handles=";
+    for (const user of coders) {
+      url += user + ";";
     }
-    let data = []
-    if(isLoading) {
-    fetch(url)
-    .then(data => data.json())
-    .then(result => {
-      result["result"].map(user => {
-        const details = {
-          name : user["handle"],
-          rating : user["rating"],
-          tag : user["rank"]
-        }
-        data.push(details)
-      })
-    })
-    .then(() => {
-      setUsers(data)
-      setLoading(false)})
-  }
-  }, [])
+    let data = [];
+    if (isLoading) {
+      fetch(url)
+        .then((data) => data.json())
+        .then((result) => {
+          result["result"].map((user) => {
+            const details = {
+              name: user["handle"],
+              rating: user["rating"],
+              tag: user["rank"],
+            };
+            return data.push(details);
+          });
+        })
+        .then(() => {
+          setUsers(data);
+          setLoading(false);
+        });
+    }
+  }, [isLoading]);
 
   users.sort((a, b) => b.rating - a.rating);
   let i = 1;
@@ -123,13 +135,13 @@ export default function Codeforces() {
   console.log(displayarr);
   // end
 
-  const [expanded, setExpanded] = useState('false');
+  const [expanded, setExpanded] = useState("false");
   console.log(expanded);
   const toggle_action = () => {
-    if (expanded === 'true') {
-      setExpanded('false');
+    if (expanded === "true") {
+      setExpanded("false");
     } else {
-      setExpanded('true');
+      setExpanded("true");
     }
   };
   return (
@@ -140,11 +152,18 @@ export default function Codeforces() {
           <h1 className="heading">
             Home/<span>Codeforces</span>
           </h1>
-          <button aria-expanded={expanded} onClick={toggle_action}>
-          </button>
+          <button aria-expanded={expanded} onClick={toggle_action}></button>
         </div>
-        {isLoading ? <h1>Loading</h1> :
-        <Table rating="Rating" issuesolved="Questions Solved" tag="Tag" displayarr={displayarr}/> }
+        {isLoading ? (
+          <h1>Loading</h1>
+        ) : (
+          <Table
+            rating="Rating"
+            issuesolved="Questions Solved"
+            tag="Tag"
+            displayarr={displayarr}
+          />
+        )}
       </div>
     </div>
   );
