@@ -6,49 +6,52 @@ import "../Styles/Leaderboard.css";
 export default function Github() {
   const [usersData, setUserData] = useState([]);
   const [users, setUsers] = useState([]);
-  const [friends,setFriends]=useState([]);
+  const [friends, setFriends] = useState([]);
   const [expanded, setExpanded] = useState("false");
+  // useEffect(() => {
+  //   const datafetch = [];
+  //   const names = ["nagaphbilla", "Vedavyas11062004", "Jitendra-Abhiram"];
+  //   function fetchRequests() {
+  //     for (let i = 0; i < names.length; i++) {
+  //       datafetch.push(
+  //         fetch(`https://api.github.com/users/${names[i]}`).then((data) =>
+  //           data.json()
+  //         )
+  //       );
+  //     }
+  //   }
+  //   fetchRequests();
+  //   function allData() {
+  //     Promise.all(datafetch).then((data) => {
+  //       console.log(data);
+  //       setUserData(data);
+  //     });
+  //   }
+  //   allData();
+  // }, []);
+
   useEffect(() => {
-    const datafetch = [];
-    const names = ["nagaphbilla", "Vedavyas11062004", "Jitendra-Abhiram"];
-    function fetchRequests() {
-      for (let i = 0; i < names.length; i++) {
-        datafetch.push(
-          fetch(`https://api.github.com/users/${names[i]}`).then((data) =>
-            data.json()
-          )
-        );
-      }
-    }
-    fetchRequests();
-    function allData() {
-      Promise.all(datafetch).then((data) => {
-        console.log(data);
+    fetch("https://leaderboard-backend.onrender.com/api/data/github")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data=", data);
         setUserData(data);
       });
-    }
-    allData();
   }, []);
 
   useEffect(() => {
     function setuserele() {
-      const pushArr = [];
-      usersData.map((ele) => {
-        console.log("ele", ele);
-        return pushArr.push({
-          name: ele.login,
-          rating: ele.public_repos,
-          problems: ele.public_repos,
-          tag: (ele.updated_at).slice(0,10),
-        });
+      const pushArr = usersData.map((ele) => {
+        return {
+          name: ele.name,
+          rating: ele.contributions,
+          tag: ele.username,
+        };
       });
       setUsers(pushArr);
     }
     setuserele();
   }, [usersData]);
-
-  console.log(usersData);
-  console.log("users= ", users);
 
   function sorting(users) {
     users.sort((a, b) => b.rating - a.rating);
@@ -82,7 +85,7 @@ export default function Github() {
   const userfriends = Friends(rankusers);
   const allusers = remainingUsers(rankusers);
 
-  function disPlayArray(friends, userfriends, allusers) {
+  function displayArray(friends, userfriends, allusers) {
     //  logic of converting into array of arrays
     let lastindex = 0;
     const displayarr = [];
@@ -153,7 +156,7 @@ export default function Github() {
   }
 
   // console.log(displayarr);
-  const displayarr = disPlayArray(friends, userfriends, allusers);
+  const displayarr = displayArray(friends, userfriends, allusers);
   // grouping done
 
   const toggle_action = () => {
@@ -170,7 +173,7 @@ export default function Github() {
       <div className="table__right">
         <div className="top">
           <h1 className="heading">
-            Home/<span>Codeforces</span>
+            Home/<span>Github</span>
           </h1>
           <button aria-expanded={expanded} onClick={toggle_action}></button>
         </div>
@@ -178,7 +181,7 @@ export default function Github() {
           <Table
             rating="Repos"
             issuesolved="Problems solved"
-            tag="LastUpdated"
+            tag="User Name"
             displayarr={displayarr}
           />
         )}

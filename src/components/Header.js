@@ -31,11 +31,11 @@ export default function Header() {
               leetcode
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/codechef" style={{ textDecoration: "none" }}>
               codechef
             </Link>
-          </li>
+          </li> */}
           <li>
             <button className="login">Login</button>
           </li>

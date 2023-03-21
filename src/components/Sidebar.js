@@ -45,14 +45,14 @@ export default function Sidebar(props) {
             Leetcode
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/codechef">
             <span>
               <img src={codecheflogo} alt=""></img>
             </span>
             Codechef
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/profile">
             <span>

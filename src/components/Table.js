@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../Styles/Leaderboard.css";
 import leftarrow from "../Asserts/chevron-left.svg";
 import rightarrow from "../Asserts/chevron-right.svg";
-export default function Table({rating,issuesolved,tag,displayarr}) {
+export default function Table({ rating, issuesolved, tag, list, displayarr }) {
   const [indexPage, setindex] = useState(0);
 
   return (
@@ -45,9 +45,7 @@ export default function Table({rating,issuesolved,tag,displayarr}) {
                 </span>
               </button>
             </td>
-            <td colSpan={2}>
-              page number {indexPage+1}
-            </td>
+            <td colSpan={2}>page number {indexPage + 1}</td>
             <td colSpan={1}>
               <button
                 onClick={() => {

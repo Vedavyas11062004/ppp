@@ -1,44 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
 import "../Styles/Leaderboard.css";
 
 export default function Leetcode() {
+  const [friends, setFriends] = useState([]);
+  const [usersData, setUserData] = useState([]);
+  const [users, setUsers] = useState([]);
   // getting users info
-  const users = [
-    {
-      name: "jitendra",
-      rating: 1700,
-      problems: 300,
-      tag: "-",
-    },
-    {
-      name: "phani",
-      rating: 1750,
-      problems: 300,
-      tag: "Knight",
-    },
-    {
-      name: "vedavyas",
-      rating: 1700,
-      problems: 320,
-      tag: "Knight",
-    },
-    {
-      name: "uday",
-      rating: 1680,
-      problems: 350,
-      tag: "-",
-    },
-  ];
-  const friends = [
-    {
-      name: "vedavyas",
-    },
-    {
-      name: "uday",
-    },
-  ];
+  useEffect(() => {
+    fetch("https://leaderboard-backend.onrender.com/api/data/leetcode")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("data-",data);
+        setUserData(data);
+      });
+  }, []);
+
+  // console.log("userData=",usersData);
+  useEffect(() => {
+    function setuserele() {
+      const pushArr = usersData.map((ele) => {
+        return {
+          name: ele.name,
+          rating:
+            ele.data.matchedUser !== null
+              ? Math.round(ele.data.userContestRanking.rating)
+              : "-",
+          problems:
+            ele.data.matchedUser !== null
+              ? ele.data.matchedUser.submitStats.acSubmissionNum[0].count
+              : "-",
+          tag:
+            ele.data.matchedUser !== null
+              ? ele.data.matchedUser.badges === []
+                ? "-"
+                : ele.data.matchedUser.badges[0]
+              : "-",
+        };
+      });
+      setUsers(pushArr);
+    }
+    setuserele();
+  }, [usersData]);
+  console.log("users1 = ", users);
+
   users.sort((a, b) => b.rating - a.rating);
   let i = 1;
   const rankusers = users.map((e) => {
@@ -105,7 +111,7 @@ export default function Leetcode() {
 
   // grouping 8 start
   const totalleft = allusers.length - lastindex;
-  console.log(lastindex);
+  // console.log(lastindex);
   const loops = Math.trunc(totalleft / 8);
   const remaining = totalleft % 8;
   let num = lastindex;
@@ -125,12 +131,12 @@ export default function Leetcode() {
     }
     displayarr.push(subarrremaing);
   }
-  console.log(displayarr);
+  // console.log(displayarr);
 
   // grouping done
 
   const [expanded, setExpanded] = useState("false");
-  console.log(expanded);
+  // console.log(expanded);
   const toggle_action = () => {
     if (expanded === "true") {
       setExpanded("false");
@@ -146,16 +152,18 @@ export default function Leetcode() {
       <div className="table__right">
         <div className="top">
           <h1 className="heading">
-            Home/<span>Codeforces</span>
+            Home/<span> Leetcode</span>
           </h1>
           <button aria-expanded={expanded} onClick={toggle_action}></button>
         </div>
-        <Table
-          rating="Rating"
-          issuesolved="Problems Solved"
-          tag="Badges"
-          displayarr={displayarr}
-        />
+        {users.length && (
+          <Table
+            rating="Rating"
+            issuesolved="Problems Solved"
+            tag="Badges"
+            displayarr={displayarr}
+          />
+        )}
       </div>
     </div>
   );
