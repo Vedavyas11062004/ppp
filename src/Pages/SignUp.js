@@ -15,28 +15,6 @@ export default function SignUp() {
     four: "false",
   });
 
-  // useEffect(() => {
-  //   if (currentScreen === 1) {
-  //     passed.current = {
-  //       ...passed.current,
-  //       one: "false",
-  //       two: "true",
-  //     };
-  //   } else if (currentScreen === 2) {
-  //     passed.current = {
-  //       ...passed.current,
-  //       two: "false",
-  //       three: "true",
-  //     };
-  //   } else if (currentScreen === 3) {
-  //     passed.current = {
-  //       ...passed.current,
-  //       three: "false",
-  //       four: "true",
-  //     };
-  //   }
-  // }, [currentScreen]);
-
   const screens = useRef([
     <SignUpPage1 setCurrentScreen={setCurrentScreen} passed={passed} setPassed={setPassed}/>,
     <SignUpPage2 setCurrentScreen={setCurrentScreen} passed={passed} setPassed={setPassed} />,
