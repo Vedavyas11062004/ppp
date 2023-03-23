@@ -8,6 +8,14 @@ import "../Styles/SignUp.css";
 
 export default function SignUp() {
   const [currentScreen, setCurrentScreen] = useState(0);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    codeforces: "",
+    leetcode: "",
+    github: "",
+    name: "",
+  });
   let [passed, setPassed] = useState({
     one: "true",
     two: "false",
@@ -15,22 +23,49 @@ export default function SignUp() {
     four: "false",
   });
 
+  const handleInputData = (input) => (e) => {
+    const { value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [input]: value,
+    }));
+  };
+
   useEffect(() => {
-    fetch("https://leaderboard-backend.onrender.com/api/users/signin")
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+    if (passed.four) {
+      fetch("https://leaderboard-backend.onrender.com/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          codeforces: formData.codeforces,
+          leetcode: formData.leetcode,
+          github: formData.github,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  },[passed.four]);
 
   const screens = useRef([
     <SignUpPage1
       setCurrentScreen={setCurrentScreen}
       passed={passed}
       setPassed={setPassed}
+      formData={formData}
+      handleInputData={handleInputData}
     />,
     <SignUpPage2
       setCurrentScreen={setCurrentScreen}
       passed={passed}
       setPassed={setPassed}
+      formData={formData}
+      handleInputData={handleInputData}
     />,
     <SignUpPage3
       setCurrentScreen={setCurrentScreen}
@@ -43,8 +78,6 @@ export default function SignUp() {
       setPassed={setPassed}
     />,
   ]);
-
-  console.log(currentScreen);
 
   return (
     <div className="signUpPage">
