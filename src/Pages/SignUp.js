@@ -8,18 +8,40 @@ import "../Styles/SignUp.css";
 
 export default function SignUp() {
   const [currentScreen, setCurrentScreen] = useState(0);
-  let [passed,setPassed]= useState({
+  let [passed, setPassed] = useState({
     one: "true",
     two: "false",
     three: "false",
     four: "false",
   });
 
+  useEffect(() => {
+    fetch("https://leaderboard-backend.onrender.com/api/users/signin")
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  }, []);
+
   const screens = useRef([
-    <SignUpPage1 setCurrentScreen={setCurrentScreen} passed={passed} setPassed={setPassed}/>,
-    <SignUpPage2 setCurrentScreen={setCurrentScreen} passed={passed} setPassed={setPassed} />,
-    <SignUpPage3 setCurrentScreen={setCurrentScreen} passed={passed} setPassed={setPassed}/>,
-    <SignUpPage4 setCurrentScreen={setCurrentScreen} passed={passed} setPassed={setPassed}/>,
+    <SignUpPage1
+      setCurrentScreen={setCurrentScreen}
+      passed={passed}
+      setPassed={setPassed}
+    />,
+    <SignUpPage2
+      setCurrentScreen={setCurrentScreen}
+      passed={passed}
+      setPassed={setPassed}
+    />,
+    <SignUpPage3
+      setCurrentScreen={setCurrentScreen}
+      passed={passed}
+      setPassed={setPassed}
+    />,
+    <SignUpPage4
+      setCurrentScreen={setCurrentScreen}
+      passed={passed}
+      setPassed={setPassed}
+    />,
   ]);
 
   console.log(currentScreen);
