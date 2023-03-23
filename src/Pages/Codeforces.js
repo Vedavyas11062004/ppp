@@ -2,10 +2,17 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
 import "../Styles/Leaderboard.css";
-import { sorting, remainingUsers, displayArray } from "../Utils.js";
+import { sorting, remainingUsers, displayArray, Friends } from "../Utils.js";
 
 export default function Codeforces() {
-  const friends = ["nagaphbilla", "vishalg17", "Narendra_Vasa"];
+  const [friends, setFriends] = useState([
+    {
+      name: "Veda_vyas_Reddy",
+    },
+    {
+      name: "nagaphbilla",
+    },
+  ]);
   const [users, setUsers] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -48,13 +55,8 @@ export default function Codeforces() {
   }, [isLoading]);
 
   const rankusers = sorting(users);
-
+  const userfriends = Friends(rankusers, friends);
   const allusers = remainingUsers(rankusers, friends);
-  const userfriends = rankusers.filter(function (objFromA) {
-    return friends.find(function (frnd) {
-      return objFromA.name === frnd;
-    });
-  });
   const displayarr = displayArray(friends, userfriends, allusers);
   // end
 
