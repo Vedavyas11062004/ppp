@@ -13,7 +13,6 @@ export default function Github() {
     fetch("https://leaderboard-backend.onrender.com/api/data/github")
       .then((res) => res.json())
       .then((data) => {
-        console.log("data=", data);
         setUserData(data);
       });
   }, []);

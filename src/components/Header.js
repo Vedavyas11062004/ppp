@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import toggleButton from "../Asserts/list.svg";
+import { useAuth } from "../Authentication/Auth";
 export default function Header() {
   const [expanded, setExpanded] = useState("false");
+  const auth = useAuth();
   console.log(expanded);
   const toggle_action = () => {
     if (expanded === "true") {
@@ -37,12 +39,18 @@ export default function Header() {
             </Link>
           </li> */}
           <li>
-            <button className="login">Login</button>
+            {!auth.user && (
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <button className="login">Login</button>
+              </Link>
+            )}
           </li>
           <li>
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              <button className="signup">signup</button>
-            </Link>
+            {!auth.user && (
+              <Link to="/signup" style={{ textDecoration: "none" }}>
+                <button className="signup">signup</button>
+              </Link>
+            )}
           </li>
         </ul>
       </div>
