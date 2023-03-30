@@ -47,14 +47,7 @@ function App() {
               </RequireAuth>
             }
           ></Route>
-          <Route
-            path="/signup"
-            element={
-              <RequireAuth>
-                <SignUp />
-              </RequireAuth>
-            }
-          ></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
         </Routes>
       </Auth>
