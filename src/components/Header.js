@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toggleButton from "../Asserts/list.svg";
 import { useAuth } from "../Authentication/Auth";
 export default function Header() {
   const [expanded, setExpanded] = useState("false");
   const auth = useAuth();
+  const navigate = useNavigate();
   console.log(expanded);
   const toggle_action = () => {
     if (expanded === "true") {
@@ -50,6 +51,19 @@ export default function Header() {
               <Link to="/signup" style={{ textDecoration: "none" }}>
                 <button className="signup">signup</button>
               </Link>
+            )}
+          </li>
+          <li>
+            {auth.user && (
+              <button
+                className="signup"
+                onClick={() => {
+                  auth.logout();
+                  navigate("/");
+                }}
+              >
+                logout
+              </button>
             )}
           </li>
         </ul>
