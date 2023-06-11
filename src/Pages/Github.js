@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../Authentication/Auth";
 import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
 import "../Styles/Leaderboard.css";
@@ -8,6 +9,7 @@ export default function Github() {
   const [users, setUsers] = useState([]);
   const [friends, setFriends] = useState([]);
   const [expanded, setExpanded] = useState("false");
+  const auth=useAuth();
   
   useEffect(() => {
     fetch("https://leaderboard-backend.onrender.com/api/data/github")
